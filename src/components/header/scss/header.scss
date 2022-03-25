@@ -1,0 +1,207 @@
+@use "../../../scss/" as *;
+
+.header {
+  position: fixed;
+  height: 100px;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  background-color: $main-color;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+
+  @include mobile {
+    background-color: $header-bg-color;
+  }
+
+  &__wrap {
+    @include flex(center, space-between);
+    position: relative;
+    min-height: $header-height;
+    padding: 0 15px;
+    height: 100%;
+  }
+
+  &__nav {
+    @include mobile {
+      display: none;
+    }
+    ul {
+      @include flex(center, space-between);
+      margin-bottom: 0;
+      li {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        @include tablet {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        a {
+          display: block;
+          font-weight: 600;
+          font-size: 14px;
+          text-transform: capitalize;
+          transition: all 0.3s ease 0s;
+          height: 40px;
+          line-height: 40px;
+          border: transparent;
+          letter-spacing: 1px;
+        }
+      }
+
+      li:last-child {
+        padding-right: 0px;
+      }
+
+      li.submenu {
+        position: relative;
+        padding-right: 30px;
+
+        i {
+          position: absolute;
+          font-size: 8px;
+          right: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        ul {
+          position: absolute;
+          width: 200px;
+          box-shadow: 0 2px 28px 0 rgb(0 0 0 / 6%);
+          overflow: hidden;
+          opacity: 0;
+          transform: translateY(2em);
+          visibility: hidden;
+          z-index: -1;
+          transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
+            z-index 0s linear 0.01s;
+
+          li {
+            display: block;
+            width: 100%;
+            background-color: #f7f7f7;
+
+            a {
+              font-size: 14px;
+              font-weight: 400;
+              border-bottom: 1px solid #eee;
+            }
+
+            &:hover {
+              background-color: $main-color;
+
+              a {
+                padding-left: 25px;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          ul {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1;
+            transform: translateY(0%);
+            transition-delay: 0s, 0s, 0.3s;
+          }
+        }
+      }
+    }
+  }
+
+  &__mobile__icon {
+    display: none;
+    cursor: pointer;
+    width: 32px;
+    height: 20px;
+
+    @include mobile {
+      @include flex(unset, space-between);
+      flex-direction: column;
+    }
+    span {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: #1e1e1e;
+      transition: all 0.4s;
+    }
+
+    span:first-child,
+    span:last-child {
+      display: block;
+      height: 2px;
+      width: 75%;
+      background-color: #1e1e1e;
+    }
+
+    &.active {
+      span {
+        display: none;
+        transition: all 0.4s;
+      }
+      span:first-child {
+        display: block;
+        transform: translateY(6px) translateX(1px) rotate(45deg);
+        width: 100%;
+      }
+      span:last-child {
+        display: block;
+        transform: translateY(-11px) translateX(1px) rotate(-45deg);
+        width: 100%;
+      }
+    }
+  }
+
+  &__mobile__menu {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 100%;
+    left: 0;
+    background-color: $header-bg-color;
+    overflow: scroll;
+
+    li {
+      display: block;
+      width: 100%;
+      border-top: 1px solid #eee;
+      text-align: center;
+
+      a {
+        height: 50px;
+        line-height: 50px;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0px;
+      }
+
+      &.submenu {
+        position: relative;
+        a {
+          position: relative;
+          display: block;
+          width: 100%;
+        }
+        i {
+          position: absolute;
+          font-size: 8px;
+          right: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        ul li a {
+          font-size: 13px;
+          font-weight: 400;
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+}

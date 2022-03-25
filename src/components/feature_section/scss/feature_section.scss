@@ -1,0 +1,25 @@
+@use "../../../scss/" as *;
+
+.feature-section {
+  padding-top: 120px;
+
+  &__heading {
+    padding: 0 33%;
+    margin-bottom: 70px;
+    @include mobile {
+      padding: 0;
+    }
+    text-align: center;
+
+    h6 {
+      padding-left: 0px;
+    }
+    h6::before {
+      display: none;
+    }
+
+    h2 {
+      padding-right: 0px;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@use "../../../scss/" as *;
+
+.hero {
+  position: relative;
+  padding-top: 100px;
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__intro {
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    @include mobile {
+      padding: 25% 0;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+
+      h4 {
+        font-family: $font-dancing-script;
+        font-size: 3.375rem;
+        @include mobile {
+          font-size: 54px;
+        }
+        color: $main-color;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+
+      h6 {
+        text-transform: uppercase;
+        color: $main-color;
+        font-size: 0.9375rem;
+        @include mobile {
+          font-size: 15px;
+        }
+        font-weight: 600;
+        letter-spacing: 3px;
+        margin-top: 5px;
+      }
+
+      .btn {
+        margin-top: 25px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__slider {
+    &__item {
+      height: 100%;
+      min-height: 700px;
+      max-height: 700px;
+      background: #000;
+
+      img {
+        min-height: 100%;
+        min-width: 100%;
+        position: relative;
+        display: inline-block;
+        max-width: none;
+        object-fit: scale-down;
+      }
+    }
+
+    &__arrow {
+      position: absolute;
+      background-color: $sub-color;
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $main-color;
+      border-radius: 100%;
+      text-align: center;
+      font-size: 36px;
+      outline: none;
+      opacity: 0.3;
+      transition: all 0.3s;
+      cursor: pointer;
+      z-index: 1;
+
+      &:hover {
+        opacity: 1;
+      }
+      &--prev {
+        left: 30px;
+      }
+
+      &--next {
+        right: 30px;
+      }
+    }
+  }
+}

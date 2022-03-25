@@ -1,0 +1,46 @@
+@use "../../../scss/" as *;
+
+.footer {
+  margin-top: 60px;
+  padding: 50px 0px;
+  background-color: $sub-color;
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    @include mobile {
+      justify-content: center;
+    }
+    margin-bottom: 0px;
+
+    li {
+      width: 44px;
+      height: 44px;
+      display: block;
+      text-align: center;
+      line-height: 44px;
+      font-size: 20px;
+      background-color: $main-color;
+      border-radius: 50%;
+      color: $sub-color;
+
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  p {
+    margin-top: 5px;
+    text-align: right;
+    @include mobile {
+      text-align: center;
+    }
+    color: $main-color;
+    line-height: 1.2;
+  }
+}
